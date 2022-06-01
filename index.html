@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bazalac Darko</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+    <link
+      href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/cdb628c462.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="home" class="hero">
+      <nav id="open-nav" class="nav">
+        <!-- nav header -->
+        <div class="nav-header">
+          <a href="about.html"><img src="./logo.png" class="logo" alt="logo" /></a>
+          <button class="nav-toggle">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+        </div>
+        <!-- links -->
+        <ul class="links">
+          <li>
+            <a href="#home">home</a>
+          </li>
+          <li class="subnav">
+            <a  class="link-btn" href="about.html">about<i class="fa-solid fa-caret-down arrow-down"></i></a>
+            <ul class="subnav-content">
+              <li><a href="about.html">About me</a></li>
+              <li><a class="about-skills" href="#">Skills</a></li>
+              <li><a class="about-edu" href="#">Education</a></li>
+          </ul>
+          </li>
+          <li>
+            <a   href="#projects">projects</a>
+          </li>
+          <li>
+            <a   href="#faq">FAQs</a>
+          </li>
+          <li>
+            <a  class="open-modal-btn" href="#">contact</a>
+          </li>
+        </ul>
+        </nav>
+      <!-- banner -->
+    <div class="banner">
+      <div class="banner-title">
+      <h1>I'm Darko</h1>
+      <h2>Front-End Web Developer</h2>
+      </div>
+      <div class="banner-button">
+        <button class="btn modal-btn open-modal-btn">
+          hire me <i class="fa-solid fa-file-signature"></i>
+        </button>
+        <button class="btn modal-btn">
+          <a href="https://acrobat.adobe.com/link/track?uri=urn:aaid:scds:US:588a0e56-992a-342f-a502-d3a1e7c04a4b" target="_blank"></a>resume <i class="fa-solid fa-file-arrow-down resume-icon"></i></a>
+        </button>
+        <!-- social media -->
+      <div class="social-icons-wrapper">
+        <ul class="social-icons social-icons2">
+          <li>
+            <a target="_blank" href="https://twitter.com/darkobz">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://github.com/DarkoBz">
+            <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.linkedin.com/in/darko-ba%C5%BEalac-75a478178">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      </div>   
+    </div>      
+    </header>
+    <!-- modal -->
+    <div class="modal-overlay">
+      <div class="form" action="https://formsubmit.co/bazalac.darko@outlook.com" method="POST">
+        <!-- Contact info -->
+        <div class="contact-info">
+          <h3 class="form-title">Let's get in touch</h3>
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            dolorum adipisci recusandae praesentium dicta!
+          </p>
+          <div class="info">
+            <div class="information">
+              <i class="fa-solid fa-location-dot"></i>
+              <p>Serbia, Kraljevo 36000</p>
+            </div>
+            <div class="information">
+              <i class="fas fa-envelope"></i>
+              <p>bazalac.darko@outlook.com</p>
+            </div>
+            <div class="information">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <p>+381 669772065</p>
+            </div>
+          </div>
+          <div class="social-media">
+            <p>Connect with me :</p>
+            <div class="social-icons-wrapper">
+              <ul class="social-icons social-icons2">
+                <li>
+                  <a target="_blank" href="https://twitter.com/darkobz">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://github.com/DarkoBz">
+                  <i class="fab fa-github"></i>
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.linkedin.com/in/darko-ba%C5%BEalac-75a478178">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Contact form -->
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
+          <form action="index.html" autocomplete="off">
+            <h3 class="form-title">Contact me</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Name</label>
+              <span>Name</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+              <input type="tel" name="phone(optional)" class="input" />
+              <label for="">Phone (Optional)</label>
+              <span>Phone (Optional)</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btn" />
+          </form>
+        </div>
+      </div>
+      <button class="close-btn"><i class="fas fa-times"></i></button>
+    </div>
+    <!-- questions -->
+    <section class="questions">
+        <!-- title -->
+        <div id="faq" class="title">
+          <h2>frequently asked questions</h2>
+        </div>
+        <div class="section-center">
+          <!-- single question -->
+          <article class="question">            
+            <div class="question-title">
+              <p>Why Are You Changing Careers?</p>
+              <!-- button -->
+              <button type="button" class="question-btn">
+                <span class="plus-icon">
+                  <i class="far fa-plus-square"></i>
+                </span>
+                <span class="minus-icon">
+                  <i class="far fa-minus-square"></i>
+                </span>
+              </button>
+            </div>            
+            <div class="question-text">
+              <p>
+                My current industry is struggling and I think tech would be exciting, challenging and more aligned with my passions. That’s the entire focus of my job search now, and I’m not applying to any other companies.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <!-- single question -->
+          <article class="question">
+            
+            <div class="question-title">
+              <p>Why Are You the Best Person for the Job?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">
+                  <i class="far fa-plus-square"></i>
+                </span>
+                <span class="minus-icon">
+                  <i class="far fa-minus-square"></i>
+                </span>
+              </button>
+            </div>
+            
+            <div class="question-text">
+              <p>
+                I am a self-motivated person who is willing to go above and beyond on any project, and to learn valuable skills on my own time.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <!-- single question -->
+          <article class="question">
+            
+            <div class="question-title">
+              <p>How Do You Handle Stress and Pressure?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">
+                  <i class="far fa-plus-square"></i>
+                </span>
+                <span class="minus-icon">
+                  <i class="far fa-minus-square"></i>
+                </span>
+              </button>
+            </div>
+            
+            <div class="question-text">
+              <p>
+                I try to react to situations rather than to stress. 
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+            </section>
+    </main>
+    <footer>
+      <div class="footer-center">
+      <!-- social media -->
+      <div class="social">
+        <ul class="social-icons-footer">
+          <li>
+            <a target="_blank" href="https://twitter.com/darkobz">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://github.com/DarkoBz">
+            <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.linkedin.com/in/darko-ba%C5%BEalac-75a478178">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        </div>
+        <div class="footer-info">
+        <p>&copy; <strong><span id="date"></span> Darko Ba&#382;alac</strong> <br> <span class="note"> Note - this is NOT a template for HTML/CSS. This is my code.</span></p>
+        </div>
+      </div> 
+    <a href="#home" class="top-link">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+    </footer>
+        <script src="main.js"></script>
+  </body>
+</html>

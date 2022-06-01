@@ -21,7 +21,6 @@ modalBtn.forEach((btn) => {
   btn.addEventListener("click", openModal);
 });
 closeBtn.addEventListener("click", closeModal);
-about.addEventListener("click", switchTabs);
 
 // navToggle
 function togglingNav() {
@@ -113,3 +112,4 @@ function switchTabs(e) {
     element.classList.add("active");
   }
 }
+about.addEventListener("click", switchTabs);

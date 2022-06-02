@@ -136,25 +136,30 @@
         <div class="contact-form">
           <span class="circle one"></span>
           <span class="circle two"></span>
-          <form  autocomplete="off" action="https://formsubmit.co/bazalac.darko@outlook.com" method="POST">
+          <form  autocomplete="off" action="https://formsubmit.co/5f36f174dfff089f00a3d9331aa42914" method="POST">
+            <!-- Honey pot -->
+            <input type="text" name="_honey" style="display: none;">
+            <!-- Disable Captcha -->
+            <input type="hidden" name="_captcha" value="false">
+
             <h3 class="form-title">Contact me</h3>
             <div class="input-container">
-              <input type="text" name="name" class="input" />
-              <label for="name">Name</label>
-              <span>Name</span>
+              <input type="text" name="name" class="input" required/>
+              <label for="name">Full&nbsp;Name</label>
+              <span>Full&nbsp;Name</span>
             </div>
             <div class="input-container">
-              <input type="email" name="email" class="input" />
+              <input type="email" name="email" class="input" required/>
               <label for="email">Email</label>
               <span>Email</span>
             </div>
             <div class="input-container">
-              <input type="tel" name="phone" class="input" />
+              <input type="tel" name="phone" class="input"/>
               <label for="phone">Phone (Optional)</label>
               <span>Phone (Optional)</span>
             </div>
             <div class="input-container textarea">
-              <textarea name="message" class="input"></textarea>
+              <textarea name="message" class="input" required></textarea>
               <label for="message">Message</label>
               <span>Message</span>
             </div>

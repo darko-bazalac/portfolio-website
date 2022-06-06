@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-padding);
 }
 
 body {
@@ -217,9 +218,7 @@ Navbar
 }
 
 .links a:hover {
-  background: var(--clr-primary-4);
   color: var(--clr-primary-1);
-  padding-left: 1.5rem;
 }
 
 .links {
@@ -296,7 +295,7 @@ Modal
 .hero {
   min-height: 115vh;
   position: relative;
-  background: url("./hero.jpg") center/cover no-repeat;
+  background: url("imgs/hero.jpg") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -419,8 +418,8 @@ Modal
 
 .close-btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.1rem;
+  right: 0.5rem;
   font-size: 2rem;
   background: transparent;
   border-color: transparent;
@@ -813,6 +812,19 @@ form {
   transition: 0.3s;
 }
 
+input.invalid {
+  border: 1px solid red;
+}
+
+.input-container ul li {
+  color: rgba(181, 2, 2, 0.977);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.input-container ul li::first-letter {
+  text-transform: capitalize;
+}
+
 textarea.input {
   padding: 0.8rem 1.2rem;
   min-height: 150px;
@@ -1039,5 +1051,42 @@ textarea.input {
   .subnav-content {
     left: calc(0px + 0.5rem);
     right: calc(0px + 0.5rem + 20px);
+  }
+}
+
+/* success submit page */
+.success-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-submit-message {
+  font-size: 2rem;
+  text-align: center;
+}
+.check-svg {
+  margin-bottom: 2rem;
+  height: 10rem;
+}
+.success-links {
+  height: auto;
+  width: 20vw;
+  margin: 10px auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 480px) {
+  .check-svg {
+    height: 5rem;
+  }
+  .form-submit-message {
+    font-size: 0.7rem;
+  }
+  .success-links {
+    width: auto;
+    justify-content: center;
   }
 }

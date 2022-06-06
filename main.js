@@ -12,7 +12,8 @@ const btns = document.querySelectorAll(".tab-btn");
 const btnSkills = document.querySelector(".skills-btn");
 const about = document.querySelector(".about");
 const articles = document.querySelectorAll(".content");
-const aboutSkills = document.querySelector(".about-skills");
+const navHeight = navbar.getBoundingClientRect().height;
+const inputs = document.querySelectorAll(".input");
 
 // Event Listeners
 navToggle.addEventListener("click", togglingNav);
@@ -21,6 +22,9 @@ modalBtn.forEach((btn) => {
   btn.addEventListener("click", openModal);
 });
 closeBtn.addEventListener("click", closeModal);
+if (about) {
+  about.addEventListener("click", switchTabs);
+}
 
 // navToggle
 function togglingNav() {
@@ -31,7 +35,6 @@ function togglingNav() {
 // fixed navbar
 function fixedNavOnScroll() {
   const scrollHeight = window.scrollY;
-  const navHeight = navbar.getBoundingClientRect().height;
   if (scrollHeight > navHeight - 10) {
     navbar.classList.add("fixed-nav");
   } else {
@@ -45,6 +48,11 @@ function fixedNavOnScroll() {
     topLlink.classList.remove("show-link");
   }
 }
+//add scroll padding
+document.documentElement.style.setProperty(
+  "--scroll-padding",
+  navHeight + 20 + "px"
+);
 
 // open-close modal
 function openModal() {
@@ -74,8 +82,6 @@ questions.forEach(function (question) {
 });
 
 //contact form
-const inputs = document.querySelectorAll(".input");
-
 function focusFunc() {
   let parent = this.parentNode;
   parent.classList.add("focus");
@@ -93,10 +99,83 @@ inputs.forEach((input) => {
   input.addEventListener("blur", blurFunc);
 });
 
-//set date
-date.innerHTML = new Date().getFullYear();
+//form validation
+let errors = {
+  name: [],
+  email: [],
+  phone: [],
+};
 
-//about switch tabs
+inputs.forEach((element) => {
+  element.addEventListener("change", (e) => {
+    let currentInput = e.target;
+    let inputValue = currentInput.value;
+    let inputName = currentInput.getAttribute("name");
+
+    if (inputValue.length > 4) {
+      currentInput.classList.remove("invalid");
+      errors[inputName] = [];
+
+      switch (inputName) {
+        case "name":
+          let validation = inputValue.trim();
+          validation = validation.split(" ");
+          if (validation.length < 2) {
+            errors[inputName].push("Please enter Full Name.");
+            currentInput.classList.add("invalid");
+          }
+          break;
+        case "email":
+          if (!isValidEmail(inputValue)) {
+            errors[inputName].push("Invalid email address.");
+            currentInput.classList.add("invalid");
+          }
+          break;
+        case "phone":
+          if (!isValidPhone(inputValue)) {
+            errors[inputName].push("Phone format is invalid.");
+            currentInput.classList.add("invalid");
+          }
+      }
+    } else {
+      errors[inputName] = [`${inputName} must be at least 5 character.`];
+      currentInput.classList.add("invalid");
+    }
+    populateErrors();
+  });
+});
+
+const populateErrors = () => {
+  for (let el of document.querySelectorAll(".input-container ul")) {
+    el.remove();
+  }
+
+  for (let key of Object.keys(errors)) {
+    let inputField = document.querySelector(`input[name="${key}"]`);
+    let parentElement = inputField.parentElement;
+    let errorElement = document.createElement("ul");
+    parentElement.appendChild(errorElement);
+
+    errors[key].forEach((error) => {
+      let li = document.createElement("li");
+      li.innerText = error;
+      errorElement.appendChild(li);
+    });
+  }
+};
+
+const isValidEmail = (email) => {
+  const re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const isValidPhone = (phone) => {
+  const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  return re.test(String(phone).toLowerCase());
+};
+
+//about page-switch tabs
 function switchTabs(e) {
   const id = e.target.dataset.id;
   if (id) {
@@ -112,4 +191,6 @@ function switchTabs(e) {
     element.classList.add("active");
   }
 }
-about.addEventListener("click", switchTabs);
+
+//set date
+date.innerHTML = new Date().getFullYear();

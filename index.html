@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bazalac Darko</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap"
       rel="stylesheet"
@@ -20,7 +22,7 @@
       <nav id="open-nav" class="nav">
         <!-- nav header -->
         <div class="nav-header">
-          <a href="about.html"><img src="./logo.png" class="logo" alt="logo" /></a>
+          <a href="about.html"><img src="imgs/logo.png" class="logo" alt="logo" /></a>
           <button class="nav-toggle">
             <i class="fa-solid fa-bars-staggered"></i>
           </button>
@@ -30,6 +32,9 @@
           <li>
             <a href="#home">home</a>
           </li>
+          <li>
+            <a href="#projects">projects</a>
+          </li>
           <li class="subnav">
             <a  class="link-btn" href="#">about<i class="fa-solid fa-caret-down arrow-down"></i></a>
             <ul class="subnav-content">
@@ -37,15 +42,12 @@
               <li><a class="about-skills" href="#">Skills</a></li>
               <li><a class="about-edu" href="#">Education</a></li>
           </ul>
+          </li>      
+          <li>
+            <a href="#faq">FAQs</a>
           </li>
           <li>
-            <a   href="#projects">projects</a>
-          </li>
-          <li>
-            <a   href="#faq">FAQs</a>
-          </li>
-          <li>
-            <a  class="open-modal-btn" href="#">contact</a>
+            <a class="open-modal-btn" href="#">contact</a>
           </li>
         </ul>
         </nav>
@@ -59,9 +61,10 @@
         <button class="btn modal-btn open-modal-btn">
           hire me <i class="fa-solid fa-file-signature"></i>
         </button>
+        <a href="MilicaIvic.pdf" target="_blank">
         <button class="btn modal-btn">
-          <a href="https://acrobat.adobe.com/link/track?uri=urn:aaid:scds:US:588a0e56-992a-342f-a502-d3a1e7c04a4b" target="_blank"></a>resume <i class="fa-solid fa-file-arrow-down resume-icon"></i></a>
-        </button>
+          resume <i class="fa-solid fa-file-arrow-down resume-icon"></i>
+        </button></a>
         <!-- social media -->
       <div class="social-icons-wrapper">
         <ul class="social-icons social-icons2">
@@ -136,46 +139,47 @@
         <div class="contact-form">
           <span class="circle one"></span>
           <span class="circle two"></span>
-          <form  autocomplete="off" action="https://formsubmit.co/5f36f174dfff089f00a3d9331aa42914" method="POST">
+          <form  autocomplete="off" action="https://formsubmit.co/5f36f174dfff089f00a3d9331aa42914" method="POST" id="form">
 
             <!-- Honey pot -->
             <input type="text" name="_honey" style="display: none;">
             <!-- Disable Captcha -->
             <input type="hidden" name="_captcha" value="false">
-
+            <!-- Success page on form submit -->
             <input type="hidden" name="_next" value="https://darko-bazalac.github.io/portfolio-website/success.html">
 
+            <!-- Form inputs -->
             <h3 class="form-title">Contact me</h3>
             <div class="input-container">
-              <input type="text" name="name" class="input" required/>
-              <label for="name">Full&nbsp;Name</label>
-              <span>Full&nbsp;Name</span>
+              <input type="text" name="name" class="input" required maxlength="30"/>
+              <label for="name">&#42;Full&nbsp;Name</label>
+              <span>&#42;Full&nbsp;Name</span>
             </div>
             <div class="input-container">
               <input type="email" name="email" class="input" required/>
-              <label for="email">Email</label>
-              <span>Email</span>
+              <label for="email">&#42;Email</label>
+              <span>&#42;Email</span>
             </div>
             <div class="input-container">
               <input type="tel" name="phone" class="input"/>
-              <label for="phone">Phone (Optional)</label>
-              <span>Phone (Optional)</span>
+              <label for="phone">Phone</label>
+              <span>Phone</span>
             </div>
             <div class="input-container textarea">
-              <textarea name="message" class="input" required></textarea>
-              <label for="message">Message</label>
-              <span>Message</span>
+              <textarea name="message" class="input" required minlength="5" maxlength="260"></textarea>
+              <label for="message">&#42;Message</label>
+              <span>&#42;Message</span>
             </div>
             <input type="submit" value="Send" class="btn" />
           </form>
+          <button class="close-btn"><i class="fas fa-times"></i></button>
         </div>
       </div>
-      <button class="close-btn"><i class="fas fa-times"></i></button>
     </div>
     <!-- questions -->
-    <section class="questions">
+    <section id="faq" class="questions">
         <!-- title -->
-        <div id="faq" class="title">
+        <div class="title">
           <h2>frequently asked questions</h2>
         </div>
         <div class="section-center">
@@ -223,8 +227,7 @@
           </article>
           <!-- end of single question -->
           <!-- single question -->
-          <article class="question">
-            
+          <article class="question">            
             <div class="question-title">
               <p>How Do You Handle Stress and Pressure?</p>
               <button type="button" class="question-btn">
@@ -235,8 +238,7 @@
                   <i class="far fa-minus-square"></i>
                 </span>
               </button>
-            </div>
-            
+            </div>            
             <div class="question-text">
               <p>
                 I try to react to situations rather than to stress. 
@@ -276,6 +278,6 @@
       <i class="fas fa-arrow-up"></i>
     </a>
     </footer>
-        <script src="main.js"></script>
+        <script src="main.js" type="module"></script>
   </body>
 </html>

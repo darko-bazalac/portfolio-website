@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
 
 :root {
-  --clr-primary-1: #49a6e9;
-  --clr-primary-2: hsl(205, 86%, 17%);
-  --clr-primary-3: hsl(205, 90%, 76%);
-  --clr-primary-4: hsl(205, 86%, 81%);
-  --clr-white: #fff;
-  --clr-gold: #c59d5f;
+  --color-1: #49a6e9;
+  --color-2: hsl(205, 90%, 76%);
+  --color-white: #fff;
+  --color-gold: #c59d5f;
   --ff-primary: "Open Sans", sans-serif;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
@@ -27,13 +25,77 @@ html {
 }
 
 body {
+  --accent-color: orangered;
+  --background-color: white;
+  --text-color: black;
+  --transition-delay: 1s;
+
   font-family: var(--ff-primary);
   background: hsl(210, 36%, 96%);
   color: hsl(209, 61%, 16%);
   line-height: 1.5;
   font-size: 0.875rem;
+  transition: var(--transition-delay);
 }
 
+/* THEME SWAPPER */
+
+body.dark {
+  --accent-color: #d0d066;
+  --background-color: #333;
+  --text-color: white;
+  color: var(--accent-color);
+  background-color: #333;
+}
+.sun-moon-container {
+  --rotation: 0;
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 4%;
+  right: 4%;
+  height: 200vmin;
+  transform: rotate(calc(var(--rotation) * 1deg));
+  transition: transform var(--transition-delay);
+}
+
+.dark .hero {
+  background: url("imgs/hero1.jpg") center/cover no-repeat;
+  transition: background var(--transition-delay);
+}
+
+.sun,
+.moon {
+  position: absolute;
+  transition: opacity, fill, var(--transition-delay);
+  width: 30px;
+  height: 30px;
+  fill: var(--accent-color);
+  cursor: pointer;
+}
+
+.sun {
+  top: 5%;
+  opacity: 1;
+}
+
+.dark .sun {
+  opacity: 0;
+}
+
+.moon {
+  bottom: 5%;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .moon {
+  opacity: 1;
+}
+
+/* Global styles */
 ul {
   list-style-type: none;
 }
@@ -159,8 +221,7 @@ main {
 Navbar
 ===============
 */
-.nav,
-.about-nav {
+.nav {
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -171,7 +232,7 @@ Navbar
 }
 
 .fixed-nav {
-  background: var(--clr-white);
+  background: var(--color-white);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -190,7 +251,7 @@ Navbar
 .nav-toggle {
   font-size: 2rem;
   padding: 1rem;
-  color: var(--clr-primary-1);
+  color: var(--color-1);
   background: transparent;
   border-color: transparent;
   transition: var(--transition);
@@ -198,7 +259,7 @@ Navbar
 }
 
 .nav-toggle:hover {
-  color: var(--clr-primary-2);
+  color: hsl(205, 86%, 17%);
   transform: rotate(90deg);
 }
 
@@ -218,7 +279,7 @@ Navbar
 }
 
 .links a:hover {
-  color: var(--clr-primary-1);
+  color: var(--color-1);
 }
 
 .links {
@@ -235,31 +296,34 @@ Navbar
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  margin: 1rem;
+  margin: 0;
+  padding: 0;
+  color: var(--color-1);
 }
 
 .social-icons a {
-  margin: 0.5rem;
-  padding: 2px;
-  color: var(--clr-primary-1);
+  margin: 0 0.5rem;
+  padding: 0;
+  color: var(--color-1);
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .social-icons a:hover {
-  color: var(--clr-primary-3);
+  color: var(--color-2);
 }
+
 .show-links {
   height: 12rem;
 }
 
 @media screen and (min-width: 800px) {
-  .nav,
-  .about-nav {
+  .nav {
     flex-direction: row;
   }
 
   .nav-header {
-    padding: 0px 20px 0px 40px;
+    padding: 0px 0px 0px 40px;
   }
 
   .nav-toggle {
@@ -272,7 +336,6 @@ Navbar
   .links {
     height: auto;
     flex-direction: row;
-    padding-right: 20px;
   }
 
   .links a {

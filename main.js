@@ -1,7 +1,7 @@
+// SELECTORS
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
-const openNavbar = document.getElementById("open-nav");
-const navbar = document.querySelector(".nav");
+const navbar = document.querySelector("#nav");
 const topLlink = document.querySelector(".top-link");
 const modalBtn = [...document.querySelectorAll(".open-modal-btn")];
 const modal = document.querySelector(".modal-overlay");
@@ -9,30 +9,54 @@ const closeBtn = document.querySelector(".close-btn");
 const questions = document.querySelectorAll(".question");
 const date = document.getElementById("date");
 const btns = document.querySelectorAll(".tab-btn");
-const btnSkills = document.querySelector(".skills-btn");
 const about = document.querySelector(".about");
 const articles = document.querySelectorAll(".content");
 const navHeight = navbar.getBoundingClientRect().height;
 const inputs = document.querySelectorAll(".input");
+const inputFiels = document.querySelectorAll("input");
+const sunMoonContainer = document.querySelector(".sun-moon-container");
+const sunMoon = document.querySelectorAll(".theme-swap");
+const body = document.querySelector("body");
 
-// Event Listeners
+const tooltipTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="tooltip"]',
+);
+const tooltipList = [...tooltipTriggerList].map(
+  (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl),
+);
+//add scroll padding
+document.documentElement.style.setProperty(
+  "--scroll-padding",
+  navHeight + 20 + "px",
+);
+
+// ****** EVENT LISTENERS **********
+
 navToggle.addEventListener("click", togglingNav);
 window.addEventListener("scroll", fixedNavOnScroll);
 modalBtn.forEach((btn) => {
   btn.addEventListener("click", openModal);
 });
 closeBtn.addEventListener("click", closeModal);
-if (about) {
-  about.addEventListener("click", switchTabs);
-}
+about.addEventListener("click", switchTabs);
+sunMoon.forEach((item) => {
+  item.addEventListener("click", darkModeToggle);
+});
+window.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("theme") === "dark") {
+    darkModeToggle();
+  }
+});
 
-// navToggle
+// ****** FUNCTIONS **********
+
+// NAV TOGGLE
 function togglingNav() {
-  openNavbar.classList.add("fixed-nav");
+  navbar.classList.toggle("fixed-nav");
   links.classList.toggle("show-links");
 }
 
-// fixed navbar
+// FIXED NAV
 function fixedNavOnScroll() {
   const scrollHeight = window.scrollY;
   if (scrollHeight > navHeight - 10) {
@@ -48,17 +72,12 @@ function fixedNavOnScroll() {
     topLlink.classList.remove("show-link");
   }
 }
-//add scroll padding
-document.documentElement.style.setProperty(
-  "--scroll-padding",
-  navHeight + 20 + "px"
-);
 
-// open-close modal
+// MODAL
 function openModal() {
   window.removeEventListener("scroll", fixedNavOnScroll);
   topLlink.classList.remove("show-link");
-  openNavbar.classList.remove("fixed-nav");
+  navbar.classList.remove("fixed-nav");
   modal.classList.add("open-modal");
   links.classList.remove("show-links");
 }
@@ -66,8 +85,22 @@ function closeModal() {
   modal.classList.remove("open-modal");
   window.addEventListener("scroll", fixedNavOnScroll);
 }
+//close on clicking outside
+window.onclick = function (e) {
+  if (e.target == modal) {
+    modal.classList.remove("open-modal");
+    window.addEventListener("scroll", fixedNavOnScroll);
+  }
+};
+//close on esc
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    modal.classList.remove("open-modal");
+    window.addEventListener("scroll", fixedNavOnScroll);
+  }
+});
 
-// show q&a
+// SHOW Q&A
 questions.forEach(function (question) {
   const btn = question.querySelector(".question-btn");
 
@@ -81,7 +114,8 @@ questions.forEach(function (question) {
   });
 });
 
-//contact form
+//CONTACT FORM
+//Styling
 function focusFunc() {
   let parent = this.parentNode;
   parent.classList.add("focus");
@@ -99,14 +133,14 @@ inputs.forEach((input) => {
   input.addEventListener("blur", blurFunc);
 });
 
-//form validation
+//Form validation
 let errors = {
   name: [],
   email: [],
   phone: [],
 };
 
-inputs.forEach((element) => {
+inputFiels.forEach((element) => {
   element.addEventListener("change", (e) => {
     let currentInput = e.target;
     let inputValue = currentInput.value;
@@ -175,7 +209,7 @@ const isValidPhone = (phone) => {
   return re.test(String(phone).toLowerCase());
 };
 
-//about page-switch tabs
+//ABOUT-SWITCH TABS
 function switchTabs(e) {
   const id = e.target.dataset.id;
   if (id) {
@@ -192,5 +226,34 @@ function switchTabs(e) {
   }
 }
 
-//set date
+//SET DATE
 date.innerHTML = new Date().getFullYear();
+
+//COPY EMAIL ON CLICK/TOUCH
+const copy = document.querySelector(".copy-to-clipboard");
+const copyMobile = document.querySelector(".copy-email");
+
+copy.addEventListener("click", () => {
+  navigator.clipboard.writeText(copy.textContent);
+  copy.style.color = "var(--color-1)";
+});
+
+copyMobile.addEventListener("touchstart", () => {
+  navigator.clipboard.writeText(copy.textContent);
+  copyMobile.style.color = "black";
+});
+
+// THEME SWAP
+function darkModeToggle() {
+  if (body.classList.contains("dark")) {
+    document.body.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
+  const currentRotation = parseInt(
+    getComputedStyle(sunMoonContainer).getPropertyValue("--rotation"),
+  );
+  sunMoonContainer.style.setProperty("--rotation", currentRotation + 180);
+}

@@ -1,7 +1,7 @@
 // SELECTORS
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
-const navbar = document.getElementsByClassName(".nav");
+const navbar = document.querySelector(".nav");
 const topLlink = document.querySelector(".top-link");
 const modalBtn = [...document.querySelectorAll(".open-modal-btn")];
 const modal = document.querySelector(".modal-overlay");

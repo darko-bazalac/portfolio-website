@@ -28,7 +28,7 @@ body {
   --accent-color: orangered;
   --background-color: white;
   --text-color: black;
-  --transition-delay: 1s;
+  --transition-delay: 2s;
 
   font-family: var(--ff-primary);
   background: hsl(210, 36%, 96%);
@@ -62,7 +62,6 @@ body.dark {
 }
 
 .dark .hero {
-  background: url("imgs/hero1.jpg") center/cover no-repeat;
   transition: background var(--transition-delay);
 }
 
@@ -230,6 +229,7 @@ Navbar
   align-items: stretch;
   justify-content: space-between;
   padding: 1rem;
+  padding-bottom: 0;
 }
 
 .fixed-nav {
@@ -265,7 +265,7 @@ Navbar
 }
 
 .logo {
-  height: 70px;
+  height: 60px;
 }
 
 .links a {
@@ -285,6 +285,7 @@ Navbar
 
 .links {
   height: 0;
+  margin-bottom: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -331,7 +332,7 @@ Navbar
     display: none;
   }
   .logo {
-    height: 80px;
+    height: 60px;
   }
 
   .links {
@@ -359,7 +360,7 @@ Hero
 .hero {
   height: 100vh;
   position: relative;
-  background: url("imgs/hero2.jpg") center/cover no-repeat;
+  background: url("imgs/hero.png") center/cover no-repeat;
 }
 
 .banner {
